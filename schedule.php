@@ -142,8 +142,7 @@ $result=mysql_query($sql);
 				</table>
 			</div>
 		</div>
-		<!-- Copyright -->
-		<!-- Footer -->
+
 
 		</div>
 </body>
