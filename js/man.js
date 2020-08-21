@@ -190,29 +190,29 @@ function valid12()
 	}
 	
 // find train selection of option
-	function clicker()
-	{
-		var c=document.getElementById("myselect");
-		var n=c.selectedIndex;
-		//alert(n);
-		if(n==0)
-		{	document.getElementById("mbox").innerHTML="From ";
-			document.getElementById("xbox").style.display="";
-			document.getElementById("xbox1").style.display="";
-		}
+	// function clicker()
+	// {
+	// 	var c=document.getElementById("myselect");
+	// 	var n=c.selectedIndex;
+	// 	//alert(n);
+	// 	if(n==0)
+	// 	{	document.getElementById("mbox").innerHTML="From ";
+	// 		document.getElementById("xbox").style.display="";
+	// 		document.getElementById("xbox1").style.display="";
+	// 	}
 		
-		if(n==1)
-		{	document.getElementById("mbox").innerHTML="Train Name ";
-			document.getElementById("xbox").style.display="none";
-			document.getElementById("xbox1").style.display="none";
-			document.getElementById("xbox1").value="";
-		}
-		if(n==2)
-		{
-			document.getElementById("mbox").innerHTML="Train Number";
-			document.getElementById("xbox").style.display="none";
-			document.getElementById("xbox1").style.display="none";
-			document.getElementById("xbox1").value="";
-		}
+	// 	if(n==1)
+	// 	{	document.getElementById("mbox").innerHTML="Train Name ";
+	// 		document.getElementById("xbox").style.display="none";
+	// 		document.getElementById("xbox1").style.display="none";
+	// 		document.getElementById("xbox1").value="";
+	// 	}
+	// 	if(n==2)
+	// 	{
+	// 		document.getElementById("mbox").innerHTML="Train Number";
+	// 		document.getElementById("xbox").style.display="none";
+	// 		document.getElementById("xbox1").style.display="none";
+	// 		document.getElementById("xbox1").value="";
+	// 	}
 		
-	}
+	// }

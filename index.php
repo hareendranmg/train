@@ -80,12 +80,9 @@ session_start();
             <!-- Photos slider -->
             <div id="myCarousel" class="carousel slide" style="width:100%; float:left;margin-bottom:3px;">
                 <div class="carousel-inner">
-                    <div class="active item"><img src="images/6.jpg" style="width:100%;height:350px;" /></div>
-                    <div class="item"><img src="images/7.jpg" style="width:100%;height:350px;" /> </div>
-                    <div class="item"><img src="images/8.jpg" style="width:100%;height:350px;" /></div>
-                    <div class="item"><img src="images/9.jpg" style="width:100%;height:350px;" /></div>
-                    <div class="item"><img src="images/10.jpg" style="width:100%;height:350px;" /> </div>
-                    <div class="item"><img src="images/11.png" style="width:100%;height:350px;" /></div>
+                    <div class="active item"><img src="images/train_1.jpg" style="width:100%;height:350px;" /></div>
+                    <div class="item"><img src="images/train_2.jpg" style="width:100%;height:350px;" /> </div>
+                    <div class="item"><img src="images/train_3.jpg" style="width:100%;height:350px;" /></div>
 
                 </div>
                 <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
