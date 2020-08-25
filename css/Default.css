@@ -15,11 +15,6 @@ body{
 	width:1024px;
 	background-color:azure;
 	padding:0 10px;
-	/* border:solid 1px; */
-	/* -o-box-shadow: 10px 10px 5px #888;
-	-moz-box-shadow: 10px 10px 5px #888;
-	-webkit-box-shadow: 10px 10px 5px #888;
-	box-shadow: 0px 0px 25px #666; */
 
 }
 #heading{
@@ -31,7 +26,7 @@ body{
 	line-height:normal;
 }
 .navbar .brand {
-	padding:10px 40px 10px;
+	padding:10px 30px 10px;
 }
 .login{
 	border-style:solid;

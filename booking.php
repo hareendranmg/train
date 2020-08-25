@@ -36,9 +36,9 @@ if ((empty($name) || empty($age))) {
 }
 
 if ((empty($name2) || empty($age2))) {
-	if($flag == 0) {
-		$flag = 0;
-	}
+    if ($flag == 0) {
+        $flag = 0;
+    }
 } else {
     $flag = 1;
     $sql = "INSERT INTO $tbl_name(pnr, uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
@@ -47,7 +47,11 @@ if ((empty($name2) || empty($age2))) {
 }
 
 if ($flag == 1) {
-    header("location:display.php?tno='$num'&& doj='$doj'&& seat='$seat'");
+    echo ("<script type='text/javascript'>
+                alert('Successfully booked. Your PNR Number is ".$pnr."');
+                window.location.href='display.php?tno=".$num."&&doj=".$doj."&&seat=".$seat."';
+                </script>");
+    // header("location:display.php?pnr='$pnr' && tno='$num'&& doj='$doj'&& seat='$seat'");
 } else {
     echo ("<script type='text/javascript'>
 				alert('Please fill minimum one passenger details');
