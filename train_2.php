@@ -103,7 +103,7 @@ else if((!isset($_POST['byname'])) && (!isset($_POST['bynum'])))
 				<a class="brand" href="train.php" >FIND TRAIN</a>
 				<a class="brand" href="reservation.php">RESERVATION</a>
 				<a class="brand" href="profile.php">PROFILE</a>
-				<a class="brand" href="booking.php">BOOKING HISTORY</a>
+				<a class="brand" href="check_pnr.php">CHECK PNR</a>
 				</div>
 			</div>
 		</div>

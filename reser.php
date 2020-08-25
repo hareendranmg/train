@@ -73,7 +73,7 @@ if(isset($_SESSION['name'])){}
 				<a class="brand" href="train.php" >FIND TRAIN</a>
 				<a class="brand" href="reservation.php">RESERVATION</a>
 				<a class="brand" href="profile.php">PROFILE</a>
-				<a class="brand" href="booking.php">BOOKING HISTORY</a>
+				<a class="brand" href="check_pnr.php">CHECK PNR</a>
 				</div>
 			</div>
 		</div>
@@ -81,7 +81,7 @@ if(isset($_SESSION['name'])){}
 		<div class="span12 well">
 		
 		
-		<div class="display" style="margin-top:0px;height:30px;">
+		<div class="display" style="margin-top:0px;height:10px;">
 		
 		
 		
@@ -105,11 +105,12 @@ if(isset($_SESSION['name'])){}
 					<th style="border-top:0px;"> Train No./Name:</th>
 					<th style="border-top:0px;">From Station:</th>
 					<th style="border-top:0px;">To Station:</th>
-					<th style="border-top:0px;">Quota:</th>
+					<!-- <th style="border-top:0px;">Quota:</th> -->
 					<th style="border-top:0px;"> 1A</th>
 					<th style="border-top:0px;"> 2A </th>
 					<th style="border-top:0px;"> 3A </th>
 					<th style="border-top:0px;"> SL </th>
+					<th style="border-top:0px;"> General </th>
 				</tr>
 				<tr>
 					<td style="border-top:0px;"> <?php echo $_GET['doj'];?> </td>
@@ -124,8 +125,8 @@ if(isset($_SESSION['name'])){}
 					<td style="border-top:0px;"><?php echo $_GET['tostn'];?></td>
 					<input name="tostn" style="display:none;" type="text" value="<?php echo $_GET['tostn'];?>"> </td>
 		
-					<td style="border-top:0px;"><?php echo $_GET['quota'];?></td>
-					<input name="quota" style="display:none;" type="text" value="<?php echo $_GET['quota'];?>"> </td>
+					<!-- <td style="border-top:0px;"><?php echo $_GET['quota'];?></td>
+					<input name="quota" style="display:none;" type="text" value="<?php echo $_GET['quota'];?>"> </td> -->
 		
 					<td style="border-top:0px;"> <input type="radio" name="selct" value="1A" onclick="return false;" <?php if($_GET['class']=='1A') {echo 'checked';}?>> </td>
 					
@@ -134,16 +135,18 @@ if(isset($_SESSION['name'])){}
 					<td style="border-top:0px;"> <input type="radio" name="selct" value="3A" onclick="return false;" <?php if($_GET['class']=='3A') echo 'checked';?>> </td>
 					
 					<td style="border-top:0px;"> <input type="radio" name="selct" value="SL" onclick="return false;" <?php if($_GET['class']=='SL') echo 'checked';?>> </td>
+					
+					<td style="border-top:0px;"> <input type="radio" name="selct" value="GL" onclick="return false;" <?php if($_GET['class']=='GL') echo 'checked';?>> </td>
 				</tr>
 				</table>
 				
 		</div>
-		<div class="display" style="height:50px;">
+		<div class="display" style="height: 0px;">
 				
 		</div>
 		<br /><br />
-		<div class="display" style="margin-top:0px;height:415px;">
-		<h2><font color="blue">Passenger Detail</font></h2>
+		<div class="display" style="margin-top:0px;height:200px;">
+		<h2><font color="blue">Passengers Detail</font></h2>
 			
 			<table class="table">
 				<tr>
@@ -172,36 +175,6 @@ if(isset($_SESSION['name'])){}
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<td > 3</td>
-					<td ><input type="text" name="name3" ></td>
-					<td ><input type="text" name="age3" class="input-small"></td>
-					<td ><select name="sex3" class="input-small">
-						<option value="male">MALE</option>
-						<option value="female">FEMALE</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td > 4</td>
-					<td ><input type="text" name="name4" ></td>
-					<td ><input type="text" name="age4" class="input-small"></td>
-					<td ><select name="sex4" class="input-small">
-						<option value="male">MALE</option>
-						<option value="female">FEMALE</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td > 5</td>
-					<td ><input type="text" name="name5" ></td>
-					<td ><input type="text" name="age5" class="input-small"></td>
-					<td ><select name="sex5" class="input-small">
-						<option value="male">MALE</option>
-						<option value="female">FEMALE</option>
-						</select>
-					</td>
-				</tr>
 				
 				<tr>
 					<td style="border-top:0px;"><input class="btn btn-info"type="submit" value="Submit" id="subb" ></td>
@@ -214,7 +187,6 @@ if(isset($_SESSION['name'])){}
 		
 		<div>
 		<br  />
-		<p> <font color="red"> CHILDREN BELOW 5 YEAR (FOR WHOM TICKET IS NOT TO BE ISSUED). </font> </p>
 		</div>
 		
 		</div>
