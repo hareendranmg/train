@@ -34,6 +34,17 @@ if (isset($_GET['id'])) {
     <!-- <link rel="stylesheet" href="assets/adminlte.min.css"> -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/Default.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+        var x = (($(window).width()) - 1024) / 2;
+        $('.wrap').css("left", x + "px");
+    });
+    </script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/man.js"></script>
+
+    
     <title>Users</title>
 </head>
 
@@ -117,13 +128,6 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script>
-    $(document).ready(function() {
-        var x = (($(window).width()) - 1024) / 2;
-        $('.wrap').css("left", x + "px");
-    });
-    </script>
 </body>
 
 </html>
