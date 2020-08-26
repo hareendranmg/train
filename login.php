@@ -1,39 +1,23 @@
 <?php
 session_start();
+require 'firstimport.php';
 
-$uname=$_POST['user'];
-$pass=$_POST['psd'];
+$uname = $_POST['user'];
+$pass = $_POST['psd'];
 
-require('firstimport.php');
+$sql = "SELECT * FROM `users` WHERE f_name='$uname' and password='$pass'";
 
-$tbl_name="users"; // Table name
+$result = mysqli_query($conn, $sql) or trigger_error(mysql_error . $sql);
 
-mysqli_select_db($conn,"$db_name")or die("cannot select DB");
-
-
-$sql="SELECT * FROM $tbl_name WHERE f_name='$uname' and password='$pass'";
-echo "$sql";
-
-$result=mysqli_query($conn,$sql) or trigger_error(mysql_error.$sql);
-
-//$row=mysql_fetch_array($result);
-
-//echo "\n\n ..nam..".$row['f_name']."\n\n ..pass..".$row['password'];
-
-if(mysqli_num_rows($result) < 1)
-{
-	echo " .... LOGIN TRY  ....";
-	$_SESSION['error'] = "1";
-	header("location:login1.php"); //
+if (mysqli_num_rows($result) < 1) {
+    $_SESSION['error'] = "1";
+    header("location:login1.php");
+} else {
+    $_SESSION['name'] = $uname;
+    $row = mysqli_fetch_array($result);
+    if ($row['is_admin'] == 1) {
+        header("location:admin/index.php");
+    } else {
+        header("location:index.php");
+    }
 }
-else
-{
-	$_SESSION['name'] = $uname; // Make it so the username can be called by $_SESSION['name']    //
-	echo " ....   LOGIN  ....";
-	echo $_SESSION['name'];
-	header("location:index.php");    //
-}
-
-?>
-
-	

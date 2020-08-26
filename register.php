@@ -15,11 +15,8 @@ $lname=$_POST['lname'];
 $pass=$_POST['psd'];
 $mail=$_POST['eid'];
 $gender=$_POST['gnd'];
-$marital=$_POST['mrt'];
 $dob=$_POST['dob'];
 $mobile=$_POST['mobile'];
-$ques=$_POST['ques'];
-$ans=$_POST['ans'];
 
 $sql2="select * from $tbl_name";
 $result2=mysqli_query($conn,$sql2);
@@ -39,8 +36,8 @@ if($flag==1){
 	//echo "oh yes";
 	}
 else{
-	$sql="INSERT INTO $tbl_name(f_name,l_name,password,email,gender,marital,dob,mobile,ques,ans)
-	VALUES ('$fname','$lname','$pass','$mail','$gender','$marital','$dob','$mobile','$ques','$ans')";
+	$sql="INSERT INTO $tbl_name(f_name,l_name,password,email,gender,dob,mobile)
+	VALUES ('$fname','$lname','$pass','$mail','$gender','$dob','$mobile')";
 	$result=mysqli_query($conn,$sql);
 
 	$_SESSION['name']=$fname;
