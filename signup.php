@@ -1,12 +1,13 @@
 <?php
-	$val=$_GET['value'];
-	if($val==1){
-	?>
-<h3>USer already exists</h3 <?php
-	}
-	
-
-?> <!DOCTYPE html>
+    if(isset($_GET['value'])) {
+        $val = $_GET['value'];
+        if($val==1){ ?>
+            <h3>USer already exists</h3 
+        <?php
+        }
+    }
+?> 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -77,42 +78,42 @@
                                 <td style="border-top:0px;"> First Name <font color=red>* </font>
                                 </td>
                                 <td style="border-top:0px;"><input type="text" name="fname" class="input-block-level"
-                                        placeholder="Enter the First name" onblur="return name1()"><span id="fn"></span>
+                                        placeholder="Enter the First name" minlength="4" maxlength="8" required><span id="fn"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="border-top:0px;"> Last Name <font color=red>* </font>
                                 </td>
                                 <td style="border-top:0px;"><input type="text" name="lname" class="input-block-level"
-                                        placeholder="Enter the Last name" onblur="return name12()"><span id="ln"></span>
+                                        placeholder="Enter the Last name" minlength="1" maxlength="8" required><span id="ln"></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="border-top:0px;"> Email ID <font color=red>* </font>
                                 </td>
-                                <td style="border-top:0px;"><input type="email" class="input-block-level" name="eid"
+                                <td style="border-top:0px;"><input type="email" class="input-block-level" name="eid" required
                                         placeholder="Enter the valid email id"></td>
                             </tr>
                             <tr>
                                 <td style="border-top:0px;"> Password <font color=red>* </font>
                                 </td>
                                 <td style="border-top:0px;"><input type="password" class="input-block-level" name="psd"
-                                        placeholder="Enter the password" onblur="return check1()"> <span id="ps"></span>
+                                        placeholder="Enter the password" minlength="4" maxlength="8" required> <span id="ps"></span>
                                 </td>
                             </tr>
 
-                            <tr>
+                            <!-- <tr>
                                 <td style="border-top:0px;"> Confirm Password <font color=red>* </font>
                                 </td>
                                 <td style="border-top:0px;"><input type="password" class="input-block-level" name="cpsd"
-                                        placeholder="Re-type the password" onblur="return confirm1()"> <span
+                                        placeholder="Re-type the password" minlength="4" maxlength="8" required> <span
                                         id="cps"></span></td>
-                            </tr>
+                            </tr> -->
 
                             <tr>
                                 <td style="border-top:0px;"> Gender <font color=red>* </font>
                                 </td>
-                                <td style="border-top:0px;"><select name="gnd">
+                                <td style="border-top:0px;"><select name="gnd" required>
                                         <option value="male">MALE</option>
                                         <option value="female">FEMALE</option>
                                     </select>
@@ -122,7 +123,7 @@
                             <tr>
                                 <td style="border-top:0px;"> Date of Birth <font color=red>* </font>
                                 </td>
-                                <td style="border-top:0px;"><input type="date" class="input-block-level input-medium"
+                                <td style="border-top:0px;"><input required type="date" class="input-block-level input-medium"
                                         name="dob" max="<?php echo date('Y-m-d',time()-60*60*24*365*18);?>"
                                         value="<?php echo date('Y-m-d',time()-60*60*24*365*18);?>"> </td>
                             </tr>
@@ -130,8 +131,9 @@
                             <tr>
                                 <td style="border-top:0px;"> Mobile No. <font color=red>*</font>
                                 </td>
-                                <td style="border-top:0px;"> +91 <input type="text" minlength="10" maxlength="10" class="input-block-level"
-                                        name="mobile" placeholder="" onblur="return mobile1()"> <span id="mn"></span>
+                                <td style="border-top:0px;"> <input type="text" class="input-block-level"
+                                        name="mobile" placeholder="Mobile Number" pattern="([6789][0-9]{9})" minlength="10" maxlength="10"required> <span id="mn"></span>
+                                    <p>Please enter a valid mobile number starts with 6,7,8 or 9</p>
                                 </td>
                             </tr>
                             <tr>

@@ -7,7 +7,9 @@ if (isset($_SESSION['name'])) {} else {
 
 }
 $tbl_name = "booking";
+$flag = false;
 if (isset($_GET['pnr'])) {
+    $flag = true;
     $pnr = $_GET['pnr'];
     $sql = "SELECT Tnumber,doj,Name,Age,Sex,Status,DOB,class FROM $tbl_name WHERE pnr='$pnr'";
     $result = mysqli_query($conn, $sql);
@@ -117,6 +119,7 @@ if (isset($_GET['pnr'])) {
                         <th style="width:100px;border-top:0px;">Date of Booking</th>
                         <th style="width:100px;border-top:0px;">Class</th>
                     </tr>
+                    <?php if ($flag) { ?>
                     <tr class="text-error">
                         <th style="width:10px;"> <?php echo $pnr; ?> </th>
                         <th style="width:100px;"> <?php echo $row['Tnumber']; ?> </th>
@@ -128,6 +131,7 @@ if (isset($_GET['pnr'])) {
                         <th style="width:100px;"> <?php echo $row['DOB']; ?> </th>
                         <th style="width:100px;"> <?php echo $row['class']; ?> </th>
                     </tr>
+                    <?php } ?>
                 </table>
             </div>
         </div>
