@@ -43,7 +43,7 @@ if (isset($_SESSION['name'])) {} else {
                 <div style="float:right; font-size:20px;margin-top:20px;">
                     <?php
 if (isset($_SESSION['name'])) {
-    echo "Welcome," . $_SESSION['name'] . "&nbsp;&nbsp;&nbsp;<a href=\"logout.php\" class=\"btn btn-info\">Logout</a>";
+    echo "Welcome," . $_SESSION['name'] . "&nbsp;&nbsp;&nbsp;<a href=\"../logout.php\" class=\"btn btn-info\">Logout</a>";
 } else {
     ?>
                     <a href="login1.php" class="btn btn-info">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;

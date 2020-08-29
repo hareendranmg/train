@@ -52,7 +52,7 @@ $row = mysqli_fetch_array($result);
                 <div style="float:right; font-size:20px;margin-top:20px;">
                     <?php
                         if (isset($_SESSION['name'])) {
-                            echo "Welcome," . $_SESSION['name'] . "&nbsp;&nbsp;&nbsp;<a href=\"logout.php\" class=\"btn btn-info\">Logout</a>";
+                            echo "Welcome," . $_SESSION['name'] . "&nbsp;&nbsp;&nbsp;<a href=\"../logout.php\" class=\"btn btn-info\">Logout</a>";
                         } else {
                             $_SESSION['error'] = 15;
                             header("location:login1.php");
