@@ -1,13 +1,24 @@
 <?php
 
-
 session_start();
 if(isset($_SESSION['name'])){}
-	else{
-		header("location:login1.php");
-		
-	}
+else {
+    header("location:login1.php");
+}
 
+$doj = '';
+$tno = '';
+$fromstn = '';
+$tostn = '';
+$class = '';
+
+if(isset($_GET['doj'])) {
+    $doj = $_GET['doj'];
+    $tno = $_GET['tno'];
+    $fromstn = $_GET['fromstn'];
+    $tostn = $_GET['tostn'];
+    $class = $_GET['class'];
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -111,38 +122,31 @@ if(isset($_SESSION['name'])){}
                             <th style="border-top:0px;"> General </th>
                         </tr>
                         <tr>
-                            <td style="border-top:0px;"> <?php echo $_GET['doj'];?> </td>
-                            <input name="doj" style="display:none;" type="text" value="<?php echo $_GET['doj'];?>">
-                            <input name="dob" style="display:none;" type="text" value="<?php echo date("Y-m-d");?>">
-                            <td style="border-top:0px;"> <?php echo $_GET['tno'];?> </td>
-                            <input name="tno" style="display:none;" type="text" value="<?php echo $_GET['tno'];?>">
-                            </td>
+                            <td style="border-top:0px;"> <?php echo $doj;?> </td>
+                            <td style="border-top:0px;"> <?php echo $tno;?> </td>
+                            <td style="border-top:0px;"><?php echo $fromstn;?></td>
+                            <td style="border-top:0px;"><?php echo $tostn;?></td>
 
-                            <td style="border-top:0px;"><?php echo $_GET['fromstn'];?></td>
-                            <input name="fromstn" style="display:none;" type="text"
-                                value="<?php echo $_GET['fromstn'];?>"> </td>
-
-                            <td style="border-top:0px;"><?php echo $_GET['tostn'];?></td>
-                            <input name="tostn" style="display:none;" type="text" value="<?php echo $_GET['tostn'];?>">
-                            </td>
-
-                            <!-- <td style="border-top:0px;"><?php echo $_GET['quota'];?></td>
-					<input name="quota" style="display:none;" type="text" value="<?php echo $_GET['quota'];?>"> </td> -->
+                            <input type="hidden" name="tno" value="<?php echo $tno;?>">    
+                            <input type="hidden" name="doj" value="<?php echo $doj;?>">    
+                            <input type="hidden" name="fromstn" value="<?php echo $fromstn;?>">    
+                            <input type="hidden" name="tostn" value="<?php echo $tostn;?>">  
+                            <input type="hidden" name="selct" value="<?php echo $class;?>">  
 
                             <td style="border-top:0px;"> <input type="radio" name="selct" value="1A"
-                                    onclick="return false;" <?php if($_GET['class']=='1A') {echo 'checked';}?>> </td>
+                                    onclick="return false;" <?php if($class == '1A') {echo 'checked';}?>> </td>
 
                             <td style="border-top:0px;"> <input type="radio" name="selct" value="2A"
-                                    onclick="return false;" <?php if($_GET['class']=='2A') echo 'checked';?>> </td>
+                                    onclick="return false;" <?php if($class == '2A') echo 'checked';?>> </td>
 
                             <td style="border-top:0px;"> <input type="radio" name="selct" value="3A"
-                                    onclick="return false;" <?php if($_GET['class']=='3A') echo 'checked';?>> </td>
+                                    onclick="return false;" <?php if($class == '3A') echo 'checked';?>> </td>
 
                             <td style="border-top:0px;"> <input type="radio" name="selct" value="SL"
-                                    onclick="return false;" <?php if($_GET['class']=='SL') echo 'checked';?>> </td>
+                                    onclick="return false;" <?php if($class == 'SL') echo 'checked';?>> </td>
 
                             <td style="border-top:0px;"> <input type="radio" name="selct" value="GL"
-                                    onclick="return false;" <?php if($_GET['class']=='GL') echo 'checked';?>> </td>
+                                    onclick="return false;" <?php if($class == 'GL') echo 'checked';?>> </td>
                         </tr>
                     </table>
 

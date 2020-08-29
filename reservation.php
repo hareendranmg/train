@@ -10,12 +10,11 @@ $k = 0;
 if (isset($_GET['bynum'])) {
 	$k = 1;
     $doj = $_GET['date'];
-    // $quota=$_POST['quota'];
-    $trains_sql = "select * from `train_list` where `Number` = " . $_GET['bynum'];
+    $trains_sql = "select * from `train_list` where `Number` =" . $_GET['bynum'];
 	$result = mysqli_query($conn, $trains_sql);
-	$row = mysqli_fetch_array($result);
-	// print_r($trains_sql);
-	// print_r($row['Name']);
+	if($result)
+		$row = mysqli_fetch_array($result);
+	else $k = 0;
 } else { $k = 0;
     $from = "";
     $to = "";
@@ -143,7 +142,6 @@ while ($train_row = mysqli_fetch_array($trains_res)) {
 
 				<?php
 if ($k == 1) {
-	print_r($row['name']);
         ?>
 					<tr class="text-error">
 					<td style="width:80px;"> <?php echo $row['Number']; ?> </td>

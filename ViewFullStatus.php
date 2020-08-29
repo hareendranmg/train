@@ -148,17 +148,12 @@ $result = mysqli_query($conn, $sql);
 						?>
                     <?php
 						$sql2 = "Select " . $class . " from train_list WHERE Number=$tno";
-						$result2 = mysqli_query($conn, $sql2);
+                        $result2 = mysqli_query($conn, $sql2);
+                        if($result2)
 						while ($row = mysqli_fetch_array($result2)) {
 							$GLOBALS['amt'] = $row[$class];
 						}
 						?>
-                </table>
-                <table class="table">
-                    <tr class="text-info">
-                        <td>Amount Paid :<?php $tot = ($n - 1) * $amt;
-						echo $tot;?></td>
-                    </tr>
                 </table>
             </div>
 		</body>
