@@ -1,13 +1,31 @@
 <?php
+require 'firstimport.php';
 session_start();
 if (isset($_SESSION['name'])) {} else {
     header("location:login1.php");
-
 }
 $tbl_name = "users"; // Table name
 $name = $_SESSION['name'];
 
-require 'firstimport.php';
+if(isset($_GET['f_name'])) {
+    $f_name = $_GET['f_name'];
+    $l_name = $_GET['l_name'];
+    $email = $_GET['email'];
+    $dob = $_GET['dob'];
+    $gender = $_GET['gender'];
+    $mobile = $_GET['mobile'];
+
+    $sql = "UPDATE users SET f_name = '$f_name', l_name = '$l_name', email = '$email', gender = '$gender', mobile = '$mobile'
+            WHERE f_name = '$name'";
+    $result = mysqli_query($conn, $sql);
+    if($result) {
+        echo "<script type='text/javascript'> alert('Profile Updated'); </script>";
+        $_SESSION['name'] = $f_name;
+        echo "<script type='text/javascript'> window.location.href='profile.php'; </script>";
+    } else {
+        echo "<script type='text/javascript'> alert('Error occured'); </script>";
+    }
+}
 
 mysqli_select_db($conn, "$db_name") or die("cannot select db");
 
@@ -83,45 +101,69 @@ if (isset($_SESSION['name'])) {
         </div>
 
         <div class="span12 well pass1">
-            <table style="width:100%;">
-                <tr>
-                    <td>
-                        <div class="span8" style="float:left;width:80%;">
-                            <table class="table">
-                                <tr>
-                                    <td>First Name : </td>
-                                    <td style="text-transform:capitalize;"><?php echo $row['f_name']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Last Name : </td>
-                                    <td style="text-transform:capitalize;"><?php echo $row['l_name']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>E-Mail : </td>
-                                    <td><?php echo $row['email']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Dob : </td>
-                                    <td><?php echo $row['dob']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td> Gender :</td>
-                                    <td><?php echo $row['gender']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Mobile No : </td>
-                                    <td><?php echo $row['mobile']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
+            <form action="" id="profile_form">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <div class="span8" style="float:left;width:80%;">
+                                <table class="table">
+                                    <tr>
+                                        <td>First Name : </td>
+                                        <td style="text-transform:capitalize;">
+                                            <input type="text" readonly name="f_name" id="f_name"
+                                                value="<?php echo $row['f_name']; ?>" required >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name : </td>
+                                        <td style="text-transform:capitalize;">
+                                            <input type="text" readonly name="l_name" id="l_name"
+                                                value="<?php echo $row['l_name']; ?>"required >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>E-Mail : </td>
+                                        <td>
+                                            <input type="text" readonly name="email" id="email"
+                                                value="<?php echo $row['email']; ?>" required >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dob : </td>
+                                        <td>
+                                            <input type="date" readonly name="dob" id="dob"
+                                                value="<?php echo $row['dob']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Gender :</td>
+                                        <td>
+                                            <input type="text" readonly name="gender" id="gender"
+                                                value="<?php echo $row['gender']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile No : </td>
+                                        <td>
+                                            <input type="text" readonly name="mobile" id="mobile"
+                                                value="<?php echo $row['mobile']; ?>" pattern="([6789][0-9]{9})"
+                                                minlength="10" maxlength="10" required>
+                                                <p>Please enter a valid mobile number starts with 6,7,8 or 9</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="button" value="Edit" class="btn btn-warning"
+                                                onclick="editProfile();"></td>
+                                        <td><input type="button" style="display: none" value="Update" id="update_btn"
+                                                class="btn btn-success" onclick="updateProfile();"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
 
-            </table>
+                </table>
+            </form>
         </div>
 
     </div>
@@ -136,5 +178,26 @@ if (isset($_SESSION['error'])) {
 ?>
 
 </body>
+
+<script>
+function editProfile() {
+    $("#f_name").removeAttr('readonly');
+    $("#l_name").removeAttr('readonly');
+    $("#email").removeAttr('readonly');
+    // $("#dob").removeAttr('readonly');
+    // $("#gender").removeAttr('readonly');
+    $("#mobile").removeAttr('readonly');
+
+    $("#update_btn").show();
+}
+
+function updateProfile() {
+    if ($('#profile_form')[0].checkValidity()) {
+        $("#profile_form").submit();
+    } else {
+        $('#profile_form')[0].reportValidity();
+    }
+}
+</script>
 
 </html>

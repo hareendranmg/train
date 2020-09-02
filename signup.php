@@ -72,7 +72,7 @@
 
                 <div class="table">
 
-                    <form name="signup" method="post" action="register.php" onsubmit="return valid12()">
+                    <form name="signup" method="post" action="register.php">
                         <table>
                             <tr>
                                 <td style="border-top:0px;"> First Name <font color=red>* </font>
@@ -132,7 +132,7 @@
                                 <td style="border-top:0px;"> Mobile No. <font color=red>*</font>
                                 </td>
                                 <td style="border-top:0px;"> <input type="text" class="input-block-level"
-                                        name="mobile" placeholder="Mobile Number" pattern="([6789][0-9]{9})" minlength="10" maxlength="10"required> <span id="mn"></span>
+                                        name="mobile" placeholder="Mobile Number" pattern="([6789][0-9]{9})" minlength="10" maxlength="10" required> <span id="mn"></span>
                                     <p>Please enter a valid mobile number starts with 6,7,8 or 9</p>
                                 </td>
                             </tr>

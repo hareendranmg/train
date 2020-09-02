@@ -13,11 +13,6 @@ if (isset($_GET['pnr'])) {
     $pnr = $_GET['pnr'];
     $sql = "SELECT Tnumber,doj,Name,Age,Sex,Status,DOB,class FROM $tbl_name WHERE pnr='$pnr'";
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-    if (!$row) {
-        $pnr = "";
-        echo "<script type='text/javascript'> alert('Invalid PNR Number'); </script>";
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -119,7 +114,9 @@ if (isset($_GET['pnr'])) {
                         <th style="width:100px;border-top:0px;">Date of Booking</th>
                         <th style="width:100px;border-top:0px;">Class</th>
                     </tr>
-                    <?php if ($flag) { ?>
+                    <?php if ($flag) { 
+                        while ($row = mysqli_fetch_array($result)) {
+                        ?>
                     <tr class="text-error">
                         <th style="width:10px;"> <?php echo $pnr; ?> </th>
                         <th style="width:100px;"> <?php echo $row['Tnumber']; ?> </th>
@@ -131,7 +128,11 @@ if (isset($_GET['pnr'])) {
                         <th style="width:100px;"> <?php echo $row['DOB']; ?> </th>
                         <th style="width:100px;"> <?php echo $row['class']; ?> </th>
                     </tr>
-                    <?php } ?>
+                    <?php } } else { 
+                        $pnr = "";
+                        // echo "<script type='text/javascript'> alert('Invalid PNR Number'); </script>";
+                    }
+                    ?>
                 </table>
             </div>
         </div>
