@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 26, 2020 at 01:12 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Host: localhost:3306
+-- Generation Time: Oct 19, 2020 at 10:18 PM
+-- Server version: 8.0.21-0ubuntu0.20.04.4
+-- PHP Version: 7.2.34-3+ubuntu20.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,17 +29,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `booking` (
-  `booking_id` int(11) NOT NULL,
+  `booking_id` int NOT NULL,
   `pnr` varchar(250) NOT NULL,
   `uname` varchar(15) NOT NULL,
-  `Tnumber` int(11) NOT NULL,
+  `Tnumber` int NOT NULL,
   `class` varchar(2) NOT NULL,
   `doj` date NOT NULL,
-  `DOB` datetime NOT NULL,
+  `DOB` date NOT NULL,
   `fromstn` varchar(15) NOT NULL,
   `tostn` varchar(15) NOT NULL,
   `Name` varchar(15) NOT NULL,
-  `Age` int(11) NOT NULL,
+  `Age` int NOT NULL,
   `sex` varchar(10) NOT NULL,
   `Status` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -48,9 +49,60 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`booking_id`, `pnr`, `uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`, `Status`) VALUES
-(35, 'PNR2709', 'admin', 13000, '3A', '2020-08-26', '2020-08-26 12:51:00', 'KOL', 'TVM', 'ljhghjhg', 786, 'male', 'Approved'),
-(34, 'PNR2709', 'admin', 13000, '3A', '2020-08-26', '2020-08-26 12:51:00', 'KOL', 'TVM', 'kgigiy', 7656, 'male', 'Approved'),
-(33, 'PNR7355', 'kunjan', 14000, '3A', '2020-08-25', '2020-08-25 08:03:12', 'CHN', 'MUM', 'gffdg', 3432, 'male', 'Approved');
+(2, 'PNR6648', 'hmg1', 12000, 'GL', '2020-10-19', '2020-10-19', 'TVM', 'CHN', 'asdasd', 34, 'male', 'Waiting'),
+(3, 'PNR6648', 'hmg1', 12000, 'GL', '2020-10-19', '2020-10-19', 'TVM', 'CHN', 'adada', 32, 'male', 'Waiting');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `interlist`
+--
+
+CREATE TABLE `interlist` (
+  `list_id` int NOT NULL,
+  `Number` int DEFAULT NULL,
+  `st1` varchar(10) DEFAULT NULL,
+  `st1arri` varchar(10) DEFAULT NULL,
+  `st2` varchar(10) DEFAULT NULL,
+  `st2arri` varchar(10) DEFAULT NULL,
+  `st3` varchar(10) DEFAULT NULL,
+  `st3arri` varchar(10) DEFAULT NULL,
+  `st4` varchar(10) DEFAULT NULL,
+  `st4arri` varchar(10) DEFAULT NULL,
+  `st5` varchar(10) DEFAULT NULL,
+  `st5arri` varchar(10) DEFAULT NULL,
+  `Ori` varchar(20) NOT NULL,
+  `Oriarri` varchar(10) NOT NULL,
+  `Dest` varchar(20) NOT NULL,
+  `Desarri` varchar(10) NOT NULL,
+  `Name` varchar(20) NOT NULL,
+  `Mon` varchar(2) NOT NULL,
+  `Tue` varchar(2) NOT NULL,
+  `Wed` varchar(2) NOT NULL,
+  `Thu` varchar(2) NOT NULL,
+  `Fri` varchar(2) NOT NULL,
+  `Sat` varchar(2) NOT NULL,
+  `Sun` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seats_availability`
+--
+
+CREATE TABLE `seats_availability` (
+  `seat_id` int NOT NULL,
+  `Train_No` int NOT NULL,
+  `Train_Name` varchar(20) NOT NULL,
+  `doj` date NOT NULL,
+  `1A` int NOT NULL,
+  `2A` int NOT NULL,
+  `3A` int NOT NULL,
+  `AC` int NOT NULL,
+  `CC` int NOT NULL,
+  `SL` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -59,7 +111,7 @@ INSERT INTO `booking` (`booking_id`, `pnr`, `uname`, `Tnumber`, `class`, `doj`, 
 --
 
 CREATE TABLE `train_list` (
-  `Number` int(11) NOT NULL,
+  `Number` int NOT NULL,
   `Name` varchar(20) NOT NULL,
   `Origin` varchar(20) NOT NULL,
   `Destination` varchar(20) NOT NULL,
@@ -72,11 +124,11 @@ CREATE TABLE `train_list` (
   `Fri` varchar(2) NOT NULL,
   `Sat` varchar(2) NOT NULL,
   `Sun` varchar(2) NOT NULL,
-  `1A` int(11) NOT NULL,
-  `2A` int(11) NOT NULL,
-  `3A` int(11) NOT NULL,
-  `SL` int(11) NOT NULL,
-  `General` int(11) NOT NULL
+  `1A` int NOT NULL,
+  `2A` int NOT NULL,
+  `3A` int NOT NULL,
+  `SL` int NOT NULL,
+  `General` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -87,9 +139,7 @@ INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, 
 (12000, 'TRIVANDRUM EXP', 'TVM', 'CHN', '22:15', '06:25', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 100),
 (13000, 'KOLKATA EXP', 'KOL', 'TVM', '09.00', '14:20', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 100),
 (14000, 'CHENNAI EXP', 'CHN', 'MUM', '13:00', '02.00', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 100),
-(15000, 'MUMBAI RAJDHANI', 'MUM', 'KOL', '08:25', '23.25', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 100),
-(15002, 'afsdf', 'kjbk', 'kjbjkb', '01:57', '01:03', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 'Y', 5, 1, 1, 1, 1),
-(15003, 'sdfdsjkn', 'sldjfjhj', 'osdfjo', '02:36', '02:36', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 1, 1, 1, 1);
+(15000, 'MUMBAI RAJDHANI', 'MUM', 'KOL', '08:25', '23.25', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 100);
 
 -- --------------------------------------------------------
 
@@ -98,24 +148,24 @@ INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, 
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int NOT NULL,
+  `user_name` varchar(250) NOT NULL,
   `f_name` varchar(50) NOT NULL,
-  `l_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `dob` varchar(20) NOT NULL,
-  `mobile` bigint(20) NOT NULL,
-  `is_admin` int(11) NOT NULL DEFAULT 0
+  `p_word` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `mobile` bigint NOT NULL,
+  `is_admin` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `email`, `password`, `gender`, `dob`, `mobile`, `is_admin`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin', 'male', '2002-08-26', 9876543210, 1),
-(2, 'kunjan', 'kunjadi', 'admin@gmail.com', '1234', 'male', '2002-08-30', 9876543234, 0);
+INSERT INTO `users` (`user_id`, `user_name`, `f_name`, `email`, `p_word`, `mobile`, `is_admin`) VALUES
+(1, 'admin', 'hari', 'hari@gmail.com', '123456', 9639639639, 1),
+(2, 'hari', 'hari', 'dsfdsf@fd.fds', '123', 5454545454, 0),
+(3, 'aaaa', 'setserew', 'ewrew@dds', 'aaaaa', 4484833333, 0),
+(4, 'hmg1', 'hmg1', 'hmg@hmg.com', '123', 9638527412, 0);
 
 --
 -- Indexes for dumped tables
@@ -126,6 +176,18 @@ INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `email`, `password`, `gender
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`booking_id`);
+
+--
+-- Indexes for table `interlist`
+--
+ALTER TABLE `interlist`
+  ADD PRIMARY KEY (`list_id`);
+
+--
+-- Indexes for table `seats_availability`
+--
+ALTER TABLE `seats_availability`
+  ADD PRIMARY KEY (`seat_id`);
 
 --
 -- Indexes for table `train_list`
@@ -147,19 +209,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `train_list`
---
-ALTER TABLE `train_list`
-  MODIFY `Number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15004;
+  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
