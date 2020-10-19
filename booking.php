@@ -35,6 +35,7 @@ if (isset($_GET['tno'])) {
         $sql = "INSERT INTO $tbl_name(pnr,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
 		VALUES ('$pnr', '$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
         $result = $conn->query($sql);
+        // print_r($sql); exit;
     }
 
     if ((empty($name2) || empty($age2))) {

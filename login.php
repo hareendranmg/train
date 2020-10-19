@@ -5,7 +5,9 @@ require 'firstimport.php';
 $uname = $_POST['user'];
 $pass = $_POST['psd'];
 
-$sql = "SELECT * FROM `users` WHERE f_name='$uname' and password='$pass'";
+$sql = "SELECT * FROM `users` WHERE f_name='$uname' and p_word='$pass'";
+
+// print_r($sql); exit;
 
 $result = mysqli_query($conn, $sql) or trigger_error(mysql_error . $sql);
 
